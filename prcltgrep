@@ -3,7 +3,7 @@
 fn_usage()
 {
 cat << EOF
-    usage: `basename $0` [-e ext] modulename
+    usage: `basename $0` [-e ext] -m modulename
 EOF
 }
 
