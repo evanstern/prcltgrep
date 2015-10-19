@@ -1,0 +1,45 @@
+#!/bin/bash
+
+fn_usage()
+{
+cat << EOF
+    usage: `basename $0` [-e ext] modulename
+EOF
+}
+
+EXT=
+while getopts "ha:e:m:" OPTION
+do
+    case $OPTION in
+        h)
+            fn_usage
+            ;;
+        e)
+            EXT=$OPTARG
+            ;;
+        m)
+            MODULENAME=$OPTARG
+            ;;
+        ?)
+            fn_usage
+            exit
+    esac
+done
+
+
+if [ -n $MODULENAME ]; then
+    REGEX=
+    if [ ! -z $EXT ]; then
+        REGEX="require('${MODULENAME}\(\.${EXT}\)\?')"
+    else
+        REGEX="require('${MODULENAME}')"
+    fi
+else
+    echo "ERROR: requires a filename"
+    fn_usage
+    exit
+fi
+
+COMMAND="grep -r \"$REGEX\" *"
+echo "RUNNING: $COMMAND"
+echo "$(grep -r $REGEX *)"
