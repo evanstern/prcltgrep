@@ -40,6 +40,6 @@ else
     exit
 fi
 
-COMMAND="grep -r \"$REGEX\" *"
+COMMAND="grep -r $REGEX *"
 echo "RUNNING: $COMMAND"
 echo "$(grep -r $REGEX *)"
