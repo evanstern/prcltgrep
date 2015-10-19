@@ -1,6 +1,10 @@
 # prcltgrep
 Grep through code for module requires
 
+## Installation
+
+Just move this script somewhere on your `$PATH` and make sure it is executable (`chmod +x prcltgrep`)
+
 ## Usage
 
 ```bash
